@@ -12,6 +12,9 @@ Stack.prototype.add = function(value) {
 
 Stack.prototype.remove = function() {
 	// body...
+
+	if(this._storage.length === 0)
+		return 0;
 	return this._storage.pop();
 };
 
