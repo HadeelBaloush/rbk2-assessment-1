@@ -6,10 +6,36 @@ var makeHashTable = function() {
     _storage: [],
     retrieve: function(key) {
       //your code is here
+
+      var bucketIndex = hashFn(key, max);
+      var bucket = this._storage[bucketIndex];
+
+      for (var i = 0; i < bucket.length; i++) {
+        if(bucket[i][0] === key)
+          return bucket[i][1];
+      }
+      return;
     },
 
     insert: function(key, value) {
       //your code is here
+      var bucketIndex = hashFn(key, max);
+
+      if(this._storage[bucketIndex] === undefined)
+        var bucket = [];
+      else
+        var bucket = this._storage[bucketIndex];
+
+
+      for (var i = 0; i < bucket.length; i++) {
+        if(bucket[i][0] === key){
+          bucket[i][1] = value;
+          return;
+        }
+      }
+
+      bucket.push([key,value]);
+      return;
   };
 };
 
